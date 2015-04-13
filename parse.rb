@@ -2,6 +2,7 @@
 # coding: utf-8
 
 require_relative 'functions.rb'
+require 'date'
 
 class View
 
@@ -64,12 +65,14 @@ begin
       end
     end
   end
+  
+  date = Date.today.to_s
 
   # ICS ファイル出力
-  print "Content-Disposition: attachment; filename=\"twincal.ics\"\r\n"
+  print "Content-Disposition: attachment; filename=\"#{date}-twincal.ics\"\r\n"
   print cgi.header(
     "charset"=>"UTF-8",
-    "type"=>'application/octet-stream; name="twincal.ics"'
+    "type"=>"application/octet-stream; name=\"#{date}-twincal.ics\""
   )
   print View.new(subjects).to_ics
   db.close
