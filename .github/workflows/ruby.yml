@@ -14,7 +14,7 @@ jobs:
       with:
         ruby-version: 2.3.x
     - name: Install sqlite3
-      run: apt install -y sqlite3
+      run: sudo apt-get update && sudo apt-get install -y sqlite3
     - name: Build and test with Rake
       run: |
         gem install bundler
