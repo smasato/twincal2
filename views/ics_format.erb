@@ -22,7 +22,7 @@ DTEND;TZID=Asia/Tokyo:<%= item[:end]  %>
 RRULE:FREQ=WEEKLY;UNTIL=<%= item[:until] %>Z;BYDAY=<%= WEEK[item[:wday].to_i][0..1] %>
 DTSTAMP:<%= @DTSTAMP %>
 CREATED:<%= @CREATED %>
-DESCRIPTION:<%= "#{item[:code]} / #{item[:tani]}単位 / #{item[:teacher]}" %>
+DESCRIPTION:<%= "#{item[:course_number]} / #{item[:tani]}単位 / #{item[:teacher]}" %>
 LAST-MODIFIED:<%= @LAST_MODIFIED %>
 LOCATION:<%= item[:location] %>
 SEQUENCE:0

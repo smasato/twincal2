@@ -23,14 +23,19 @@ db = SQLite3::Database.new(DATABASE_FILENAME)
 db.busy_timeout(100000)
 
 db.execute("create table #{TABLE_NAME} (id integer primary key, #{COLUMN_NAMES.map{|c| "#{c} text"}.join(',')})")
-db.execute("create index code_index on #{TABLE_NAME}(code)")
+db.execute("create index code_index on #{TABLE_NAME}(course_number)")
 
-table = CSV.parse(File.open(csv_filename).read.encode("UTF-8", "CP932"))
+table = []
+File.foreach(csv_filename, encoding: 'CP932:UTF-8', headers: true) do |csv_line|
+  puts csv_line
+  row = CSV.parse(csv_line.strip.gsub('\"', '""')).first
+  table.push(row)
+end
 
 row_count = 0
 
 table.each do |row|
-  str = "insert into #{TABLE_NAME}(#{COLUMN_NAMES.join(',')}) values(#{row.take(15).map{|s| escape_sql(s)}.join(",")})"
+  str = "insert into #{TABLE_NAME}(#{COLUMN_NAMES.join(',')}) values(#{row.map{|s| escape_sql(s)}.join(",")})"
   #p str
   db.execute(str)
 

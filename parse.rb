@@ -32,14 +32,14 @@ begin
   subjects = []
 
   table.each do |csv_row|
-    code = csv_row[0].delete("\n\r").gsub("'", "''")
-    sql = "select * from #{TABLE_NAME} where code = '#{code}'"
+    course_number = csv_row[0].delete("\n\r").gsub("'", "''")
+    sql = "select * from #{TABLE_NAME} where course_number = '#{course_number}'"
     db.execute(sql) do |row|
     #sql = "select * from #{TABLE_NAME} where code = ?"
     #db.execute(sql, code) do |row|
 
       s = {
-        :code => row["code"],
+        :course_number => row["course_number"],
         :name => row["name"],
         :tani => row["unit"],
         :location => row["location"],

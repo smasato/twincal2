@@ -46,7 +46,7 @@ database:
   filename: "kamoku.db"
   table_name: "kamoku"
   column_names:
-    - "code"
+    - "course_number"
     - "name"
     - "method"
     - "unit"
@@ -60,4 +60,6 @@ database:
     - "research_students"
     - "reason"
     - "english_name"
-    - "time"
+    - "course_code"
+    - "requirement_course_name"
+    - "updated_date"
