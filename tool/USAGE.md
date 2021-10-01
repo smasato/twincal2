@@ -16,6 +16,8 @@ database_import.rb は、KdB の出力する CSV ファイルを SQlite3 のテ�
 
 ### CSV から DB のテーブルに変換する
 
+- KdBから出力されるCSVファイルはダブルクオーテーションのエスケープがされていないので修正する必要がある。
+
 ```sh
 $ cd twincal2/tool
 $ rm kamoku.db
