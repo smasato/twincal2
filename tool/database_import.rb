@@ -27,16 +27,16 @@ db.execute("create index code_index on #{TABLE_NAME}(course_number)")
 
 table = []
 File.foreach(csv_filename, encoding: 'CP932:UTF-8', headers: true) do |csv_line|
-  puts csv_line
+  # puts csv_line
   row = CSV.parse(csv_line.strip.gsub('\"', '""')).first
-  table.push(row)
+  table.push([row[0], row[1], row[3], row[5], row[6], row[7], row[8]])
 end
 
 row_count = 0
 
 table.each do |row|
   str = "insert into #{TABLE_NAME}(#{COLUMN_NAMES.join(',')}) values(#{row.map{|s| escape_sql(s)}.join(",")})"
-  #p str
+  # p str
   db.execute(str)
 
   row_count += 1

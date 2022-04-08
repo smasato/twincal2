@@ -46,20 +46,10 @@ database:
   filename: "kamoku.db"
   table_name: "kamoku"
   column_names:
-    - "course_number"
-    - "name"
-    - "method"
-    - "unit"
-    - "grade"
-    - "term"
-    - "period"
-    - "location"
-    - "teacher"
-    - "abstruct"
-    - "note"
-    - "research_students"
-    - "reason"
-    - "english_name"
-    - "course_code"
-    - "requirement_course_name"
-    - "updated_date"
+    - "course_number" # 科目番号
+    - "name" # 科目名
+    - "unit" # 単位
+    - "term" # 実施学期
+    - "period" # 曜時限
+    - "location" # 教室
+    - "teacher" # 担当教員
